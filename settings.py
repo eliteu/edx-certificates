@@ -52,6 +52,9 @@ CERT_KEY_ID = 'FEF8D954'
 # Specify the default name of the certificate PDF
 CERT_FILENAME = 'Certificate.pdf'
 
+# Specify the default name of the certificate qrcode PNG
+QRCODE_FILENAME = 'verify_qrcode.png'
+
 # Specify these credentials before running the test suite
 # or ensure that your .boto file has write permission
 # to the bucket.
