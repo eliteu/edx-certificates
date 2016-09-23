@@ -460,7 +460,7 @@ class CertificateGen(object):
         styleOpenSansLight = ParagraphStyle(name="opensans-light", leading=10, fontName='OpenSans-Light')
 
         # Text is overlayed top to bottom
-        #   * Issued date (tottom left corner)
+        #   * Issued date (bottom left corner)
         #   * "This is to certify that"
         #   * Student's name
         #   * "Has successfully completed"
