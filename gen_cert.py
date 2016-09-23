@@ -98,7 +98,7 @@ def prettify_isodate(isoformat_date):
 
 
 def prettify_chinese_isodate(isoformat_date):
-    """Convert a string like '2012-02-02' to one like '2012�2月2日'"""
+    """Convert a string like '2012-02-02' to one like '2012年2月2日'"""
     m = RE_ISODATES.match(isoformat_date)
     if not m:
         raise TypeError("prettify_isodate called with incorrect date format: %s" % isoformat_date)
