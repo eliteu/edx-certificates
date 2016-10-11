@@ -470,7 +470,7 @@ class CertificateGen(object):
         WIDTH = 297  # width in mm (A4)
         HEIGHT = 210  # hight in mm (A4)
 
-        LEFT_INDENT = 44  # mm from the left side to write the text
+        LEFT_INDENT = 45  # mm from the left side to write the text
         RIGHT_INDENT = 45  # mm from the right side for the CERTIFICATE
 
         # Issued ..
