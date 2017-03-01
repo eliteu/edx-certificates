@@ -472,7 +472,9 @@ class CertificateGen(object):
 
         LEFT_INDENT = 45  # mm from the left side to write the text
         RIGHT_INDENT = 45  # mm from the right side for the CERTIFICATE
-
+        if self.template_type != 'verified':
+            LEFT_INDENT = 31
+            RIGHT_INDENT = 31
         # Issued ..
 
         styleArial.fontSize = 12
@@ -486,7 +488,10 @@ class CertificateGen(object):
         paragraph = Paragraph("<i>{0}</i>".format(
             paragraph_string), styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 41 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 41 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 33 * mm)
 
 	# Chinese issued .. 
 	
@@ -500,7 +505,10 @@ class CertificateGen(object):
         
 	paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 46 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 46 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 38 * mm)
 	
         # This is to certify..
 	styleArial.fontSize = 12
@@ -512,7 +520,10 @@ class CertificateGen(object):
         paragraph_string = "兹证明"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 137.5 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 137.5 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 136.5 * mm)
 
         styleArial.fontSize = 12
         styleArial.leading = 10
@@ -523,7 +534,10 @@ class CertificateGen(object):
         paragraph_string = "This is to certify that"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 132.5 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 132.5 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 131.5 * mm)
 
         #  Student name
 
@@ -532,12 +546,18 @@ class CertificateGen(object):
         # unusual characters
         style = styleOpenSans
         style.leading = 12
-        width = stringWidth(student_name.decode('utf-8'), 'OpenSans-Bold', 40) / mm
+        if self.template_type == 'verified':
+            width = stringWidth(student_name.decode('utf-8'), 'OpenSans-Bold', 40) / mm
+        else:
+            width = stringWidth(student_name.decode('utf-8'), 'OpenSans-Bold', 50) / mm
         paragraph_string = "<b>{0}</b>".format(student_name)
 
         if self._use_unicode_font(student_name):
             style = styleArial
-            width = stringWidth(student_name.decode('utf-8'), 'Arial Unicode', 40) / mm
+            if self.template_type == 'verified':
+                width = stringWidth(student_name.decode('utf-8'), 'Arial Unicode', 40) / mm
+            else:
+                width = stringWidth(student_name.decode('utf-8'), 'OpenSans-Bold', 50) / mm
             # There is no bold styling for Arial :(
             paragraph_string = "{0}".format(student_name)
 
@@ -547,8 +567,12 @@ class CertificateGen(object):
             style.fontSize = 24
             nameYOffset = 119
         else:
-            style.fontSize = 40
-            nameYOffset = 122
+            if self.template_type == 'verified':
+                style.fontSize = 40
+                nameYOffset = 122
+            else:
+                style.fontSize = 50
+                nameYOffset = 121
 
         style.textColor = colors.Color(
             0.261, 0.289, 0.328)
@@ -569,7 +593,10 @@ class CertificateGen(object):
         paragraph_string = "顺利完成并通过"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 96 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 96 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 89 * mm)
 	
 	styleArial.fontSize = 12
         styleArial.leading = 10
@@ -580,7 +607,10 @@ class CertificateGen(object):
         paragraph_string = "Has successfully completed and passed the course of"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 91 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 91 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 84 * mm)
         # Course name
 
         # styleArial.fontName = 'Arial Unicode'
@@ -619,12 +649,18 @@ class CertificateGen(object):
         elif '6.00x' in self.course:
             paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
             paragraph.drawOn(c, LEFT_INDENT * mm, 76 * mm)
-        else:
+        else: 
             paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-            paragraph.drawOn(c, LEFT_INDENT * mm, 80 * mm)
+            if self.template_type == 'verified':
+                paragraph.drawOn(c, LEFT_INDENT * mm, 80 * mm)
+            else:
+                paragraph.drawOn(c, LEFT_INDENT * mm, 73 * mm)
 	
 	# Course's english name..
-        styleArial.fontSize = 12
+        if self.template_type == 'verified':
+            styleArial.fontSize = 12
+        else:
+            styleArial.fontSize = 14
         styleArial.leading = 10
         styleArial.textColor = colors.Color(
              0.664, 0.695, 0.738)
@@ -633,7 +669,10 @@ class CertificateGen(object):
         paragraph_string = "{course_english_name}".format(course_english_name=self.course_english_name)
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 73 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 73 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 66 * mm)
 
         # Which is offered ..
         styleArial.fontSize = 12
@@ -645,7 +684,10 @@ class CertificateGen(object):
         paragraph_string = "该课程由英荔教育提供并授权"
 	paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 62 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 62 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 53 * mm)
 
         styleArial.fontSize = 12
         styleArial.leading = 10
@@ -656,7 +698,10 @@ class CertificateGen(object):
 	paragraph_string = "Which is offered and authorized by Elite Education"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, LEFT_INDENT * mm, 57 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, LEFT_INDENT * mm, 57 * mm)
+        else:
+            paragraph.drawOn(c, LEFT_INDENT * mm, 48 * mm)
 
         # Honor code
 
@@ -675,7 +720,10 @@ class CertificateGen(object):
         paragraph = Paragraph(paragraph_string, styleArial)
 
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, (WIDTH - RIGHT_INDENT - width) * mm, 42 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, (WIDTH - RIGHT_INDENT - width) * mm, 42 * mm)
+        else:
+            paragraph.drawOn(c, (WIDTH - RIGHT_INDENT - width) * mm, 34 * mm)
 
         styleArial.fontSize = 7
         styleArial.leading = 10
@@ -703,7 +751,10 @@ class CertificateGen(object):
         paragraph = Paragraph(paragraph_string, styleArial)
 
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        paragraph.drawOn(c, (WIDTH - RIGHT_INDENT - width) * mm, 38 * mm)
+        if self.template_type == 'verified':
+            paragraph.drawOn(c, (WIDTH - RIGHT_INDENT - width) * mm, 38 * mm)
+        else:
+            paragraph.drawOn(c, (WIDTH - RIGHT_INDENT - width) * mm, 30 * mm)
 	
 	# Generate verify qrcode for certificate verification
 	img = qrcode.make(url_string)
@@ -712,7 +763,10 @@ class CertificateGen(object):
 
 	image = Image(verify_qrcode_filename, 1.5 * inch, 1.5 * inch)
 	image.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-	image.drawOn(c, (WIDTH - RIGHT_INDENT - 35) * mm, 47 * mm)
+        if self.template_type == 'verified':
+	    image.drawOn(c, (WIDTH - RIGHT_INDENT - 35) * mm, 47 * mm)
+        else:
+            image.drawOn(c, (WIDTH - RIGHT_INDENT - 35) * mm, 39 * mm)
 	
         c.showPage()
         c.save()
