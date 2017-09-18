@@ -20,16 +20,6 @@ course-v1:edX+DemoX_v3+Demo_Course_v3:
     Pass: 'This person passed.'
     Distinction: 'This person is a complete overachiever!'
 
-course-v1:leseil+cs0002+2017_06:
-  LONG_ORG: leseil
-  LONG_COURSE: 乐赛益生菌培训
-course-v1:hualixueyuan+xwcbx001+2017_09:
-  LONG_ORG: hualixueyuan
-  LONG_COURSE:  新闻传播学
-course-v1:lmy+zs001+2016-12:
-  LONG_ORG: lmy
-  LONG_COURSE: 拿证书
-
 course-v1:EliteU+63050001+A1:
   LONG_COURSE: 大数据时代下的信息技术管理战略
   LONG_ORG: EliteU
@@ -54,6 +44,8 @@ course-v1:EliteU+79065001+A1:
   LONG_COURSE: 收益管理
   LONG_ORG: EliteU
   COURSE_ENGLISH_NAME: Revenue Management
-course-v1:lmy+007+2018:
-  LONG_ORG: lmy
-  LONG_COURSE: 那证书后删除课程
+
+course-v1:EliteU+63015001+A1:
+  LONG_COURSE: 组织行为学
+  LONG_ORG: EliteU
+  COURSE_ENGLISH_NAME: Organizational Behavior

@@ -38,7 +38,6 @@ class XQueuePullManager(object):
             request = self.session.post('{0}/xqueue/login/'.format(self.url),
                                         data={'username': self.queue_user,
                                               'password': self.queue_pass})
-            log.info(request.text)
             log.info('_Login test')
             response = json.loads(request.text)
             if response['return_code'] != 0:
@@ -55,8 +54,6 @@ class XQueuePullManager(object):
         try:
             request = self.session.get('{0}/xqueue/get_queuelen/'.format(
                 self.url), params={'queue_name': self.queue_name})
-            log.info('get_length')
-            log.info(request.text)
             response = json.loads(request.text)
             if response['return_code'] != 0:
                 raise Exception("Invalid return code in reply")
