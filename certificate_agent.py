@@ -92,16 +92,14 @@ def main():
             grade = xqueue_body.get('grade', None)
             issued_date = xqueue_body.get('issued_date', None)
             designation = xqueue_body.get('designation', None)
-            if last_course != course_id:
-                cert = CertificateGen(
+            cert = CertificateGen(
                     course_id,
                     template_pdf,
                     aws_id=args.aws_id,
                     aws_key=args.aws_key,
                     long_course=course_name.encode('utf-8'),
                     issued_date=issued_date,
-                )
-                last_course = course_id
+            )
             if action in ['remove', 'regen']:
                 cert.delete_certificate(xqueue_body['delete_download_uuid'],
                                         xqueue_body['delete_verify_uuid'])
