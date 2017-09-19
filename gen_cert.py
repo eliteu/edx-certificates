@@ -531,7 +531,7 @@ class CertificateGen(object):
         paragraph.drawOn(c, LEFT_INDENT * mm, 46 * mm)
 
         # This is to certify..
-	    styleArial.fontSize = 12
+	styleArial.fontSize = 12
         styleArial.leading = 10
         styleArial.textColor = colors.Color(
             0.261, 0.289, 0.328)
@@ -540,10 +540,7 @@ class CertificateGen(object):
         paragraph_string = "兹证明"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
-        if self.template_type == 'verified':
-            paragraph.drawOn(c, LEFT_INDENT * mm, 137.5 * mm)
-        else:
-            paragraph.drawOn(c, LEFT_INDENT * mm, 136.5 * mm)
+        paragraph.drawOn(c, LEFT_INDENT * mm, 137.5 * mm)
 
         styleOpenSansLight.fontSize = 12
         styleOpenSansLight.leading = 10
@@ -616,7 +613,7 @@ class CertificateGen(object):
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
         paragraph.drawOn(c, LEFT_INDENT * mm, 96 * mm)
 	
-	    styleArial.fontSize = 12
+	styleArial.fontSize = 12
         styleArial.leading = 10
         styleArial.textColor = colors.Color(
             0.664, 0.695, 0.738)
@@ -699,7 +696,7 @@ class CertificateGen(object):
              0.664, 0.695, 0.738)
         styleArial.alignment = TA_LEFT
 
-	    paragraph_string = "Which is offered and authorized by Elite Education"
+	paragraph_string = "Which is offered and authorized by Elite Education"
         paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
         paragraph.drawOn(c, LEFT_INDENT * mm, 57 * mm)
