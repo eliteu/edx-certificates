@@ -685,7 +685,7 @@ class CertificateGen(object):
             0.261, 0.289, 0.328)
         styleArial.alignment = TA_LEFT
 
-        paragraph_string = "该课程由E教育提供并授权"
+        paragraph_string = "该课程由E-ducation提供并授权"
 	paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
         paragraph.drawOn(c, LEFT_INDENT * mm, 62 * mm)
