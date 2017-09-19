@@ -686,7 +686,7 @@ class CertificateGen(object):
         styleArial.alignment = TA_LEFT
 
         paragraph_string = "该课程由E教育提供并授权"
-	    paragraph = Paragraph(paragraph_string, styleArial)
+	paragraph = Paragraph(paragraph_string, styleArial)
         paragraph.wrapOn(c, WIDTH * mm, HEIGHT * mm)
         paragraph.drawOn(c, LEFT_INDENT * mm, 62 * mm)
 
@@ -709,7 +709,7 @@ class CertificateGen(object):
         styleArial.alignment = TA_LEFT
 
         paragraph_string = "验证地址 Authenticity can be verified at"
-	    width = stringWidth(
+	width = stringWidth(
             paragraph_string,
             'Arial Unicode',
             7,
@@ -732,7 +732,7 @@ class CertificateGen(object):
             verify_url=settings.CERT_VERIFY_URL,
             verify_path=S3_VERIFY_PATH,
             verify_uuid=verify_uuid)
-	    url_string = "{verify_url}/{verify_path}/{verify_uuid}".format(
+        url_string = "{verify_url}/{verify_path}/{verify_uuid}".format(
             verify_url=settings.CERT_VERIFY_URL,
             verify_path=S3_VERIFY_PATH,
             verify_uuid=verify_uuid)
