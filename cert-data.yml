@@ -90,3 +90,13 @@ course-v1:EliteU+63015001+A7:
   LONG_ORG: EliteU
   COURSE_ENGLISH_NAME: Organizational Behavior in the Mobile Internet Era
 
+course-v1:EliteU+63040004+A1:
+  LONG_COURSE: 公司财务
+  LONG_ORG: EliteU
+  COURSE_ENGLISH_NAME: Corporate Finance
+
+course-v1:EliteU+63040004+B1:
+  LONG_COURSE: 公司财务
+  LONG_ORG: EliteU
+  COURSE_ENGLISH_NAME: Corporate Finance
+
